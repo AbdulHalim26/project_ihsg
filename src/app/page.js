@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import TradingViewWidget from "@/components/TradingViewWidget";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
@@ -281,9 +281,9 @@ export default function Page() {
                 <p className="text-slate-400 font-light text-sm mb-8 leading-relaxed">
                   Pahami apa itu saham, cara kerja bursa efek, dan pengenalan aplikasi sekuritas dari nol.
                 </p>
-                <Link href="/edukasi?level=pemula" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-white/5 hover:bg-blue-600 text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                  Mulai Belajar
-                </Link>
+                <Link href="/edukasi?tab=dasar" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-white/5 hover:bg-blue-600 text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+                Mulai Belajar
+              </Link>
               </div>
             </motion.div>
 
@@ -305,7 +305,8 @@ export default function Page() {
                 <p className="text-slate-400 font-light text-sm mb-8 leading-relaxed">
                   Bedah laporan keuangan, valuasi rasio (PER, PBV), dan cara mencari saham salah harga.
                 </p>
-                <Link href="/edukasi?level=menengah" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-white/5 hover:bg-emerald-600 text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+                {/* Ganti Link yang lama dengan ini */}
+                <Link href="/edukasi?tab=menengah" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-white/5 hover:bg-emerald-600 text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]">
                   Lihat Silabus
                 </Link>
               </div>
@@ -329,123 +330,16 @@ export default function Page() {
                 <p className="text-slate-400 font-light text-sm mb-8 leading-relaxed">
                   Membaca chart, indikator teknikal lanjutan, dan mendeteksi akumulasi/distribusi big money.
                 </p>
-                <Link href="/edukasi?level=mahir" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-white/5 hover:bg-purple-600 text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]">
-                  Lihat Silabus
-                </Link>
+                <Link href="/edukasi?tab=mahir" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-white/5 hover:bg-purple-600 text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]">
+                Lihat Silabus
+              </Link>
               </div>
             </motion.div>
 
           </div>
         </div>
       </section>
-
-    {/* ========================================================= */}
-      {/* 5. FOOTER SECTION */}
-      {/* ========================================================= */}
-      <footer className="bg-[#0B1120] border-t border-white/10 pt-16 pb-8 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Grid Layout buat isi Footer */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            
-            {/* Kolom 1: Brand & Deskripsi */}
-            <div className="md:col-span-2">
-              <Link href="/" className="inline-block mb-6">
-                <div className="flex-shrink-0 flex items-center">
-                           <Image 
-                             src="/logo-aksara.png" 
-                             alt="Aksara Logo" 
-                             width={200} 
-                             height={80} 
-                             className="w-auto h-20 object-contain"
-                             priority
-                           />
-                         </div>
-              </Link>
-              <p className="text-slate-400 font-light text-sm leading-relaxed max-w-sm">
-                Langkah Cerdas Menuju Kebebasan Finansial melalui Aksi Saham Rasional. Platform edukasi dan analisis saham terpercaya untuk investor Indonesia.
-              </p>
-            </div>
-
-            {/* Kolom 2: Navigasi Cepat */}
-            <div>
-              <h4 className="text-white font-semibold mb-6">Eksplorasi</h4>
-              <ul className="space-y-4">
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Market Overview
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Produk & Layanan
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Kelas Edukasi
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Promosi
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Kolom 3: Perusahaan */}
-            <div>
-              <h4 className="text-white font-semibold mb-6">Perusahaan</h4>
-              <ul className="space-y-4">
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Tentang Kami
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Hubungi Kami
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Syarat & Ketentuan
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-300">
-                    Kebijakan Privasi
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            
-          </div>
-
-          {/* Garis Pemisah Bawah */}
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-500 text-xs text-center md:text-left">
-              &copy; {new Date().getFullYear()} AKSARA (Aksi Saham Rasional). All rights reserved.
-            </p>
-            
-            {/* Opsional: Tempat buat naruh icon sosmed kalau ada */}
-            <div className="flex gap-4">
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-blue-500 hover:text-white transition-all cursor-pointer">
-                In
-              </div>
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-blue-500 hover:text-white transition-all cursor-pointer">
-                Ig
-              </div>
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-blue-500 hover:text-white transition-all cursor-pointer">
-                X
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </footer>            
-
+      
     </main>
   );
 }

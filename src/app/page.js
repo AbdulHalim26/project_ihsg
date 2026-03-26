@@ -97,77 +97,73 @@ export default function Page() {
       </section>
 
       {/* ========================================================= */}
-      {/* 2. SECTION MENGAPA AKSARA (REVISI: ANTI-BLUR PREMATUR) */}
-      {/* ========================================================= */}
-      <section className="py-24 relative z-10 bg-white dark:bg-[#0B1120] transition-colors duration-300"> 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            /* Hapus exit biar pas di scroll ke bawah tulisannya gak ngeblur lagi */
-            viewport={{ once: true, amount: 0.2 }} 
-            transition={{ duration: 0.8 }}
-            className="text-3xl md:text-4xl font-bold text-center text-slate-900 dark:text-white mb-16"
-          >
-            Mengapa harus memilih AKSARA?
-          </motion.h2>
+{/* 2. SECTION MENGAPA AKSARA (FIX HOVER HP) */}
+{/* ========================================================= */}
+<section className="py-24 relative z-10 bg-white dark:bg-[#0B1120] transition-colors duration-300"> 
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.h2 
+      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.2 }} 
+      transition={{ duration: 0.8 }}
+      className="text-3xl md:text-4xl font-bold text-center text-slate-900 dark:text-white mb-16"
+    >
+      Mengapa harus memilih AKSARA?
+    </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* KOTAK 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.1 }} 
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 hover:border-blue-500/50 group"
-            >
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 text-center group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
-                Analisa Berbasis Data
-              </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base font-light">
-                Kami menyajikan data saham secara real-time untuk membantu Anda mengambil keputusan investasi yang objektif.
-              </p>
-            </motion.div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      {/* KOTAK 1 */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.1 }} 
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 md:hover:-translate-y-3 md:hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 md:hover:border-blue-500/50 group"
+      >
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 text-center md:group-hover:text-blue-500 dark:md:group-hover:text-blue-400 transition-colors">
+          Analisa Berbasis Data
+        </h3>
+        <p className="text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base font-light">
+          Kami menyajikan data saham secara real-time untuk membantu Anda mengambil keputusan investasi yang objektif.
+        </p>
+      </motion.div>
 
-            {/* KOTAK 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.1 }} 
-              transition={{ duration: 0.6, delay: 0.1 }} 
-              className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 hover:border-blue-500/50 group"
-            >
-              <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4 text-center group-hover:text-blue-500 dark:group-hover:text-blue-300 transition-colors">
-                Kurikulum Terstruktur
-              </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base font-light">
-                Mulai dari dasar-dasar pasar modal hingga strategi tingkat lanjut yang mudah dipahami pemula.
-              </p>
-            </motion.div>
+      {/* KOTAK 2 */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.1 }} 
+        transition={{ duration: 0.6, delay: 0.1 }} 
+        className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 md:hover:-translate-y-3 md:hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 md:hover:border-blue-500/50 group"
+      >
+        <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4 text-center transition-colors">
+          Kurikulum Terstruktur
+        </h3>
+        <p className="text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base font-light">
+          Mulai dari dasar-dasar pasar modal hingga strategi tingkat lanjut yang mudah dipahami pemula.
+        </p>
+      </motion.div>
 
-            {/* KOTAK 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, amount: 0.1 }} 
-              transition={{ duration: 0.6, delay: 0.1 }} 
-              className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 hover:border-blue-500/50 group"
-            >
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 text-center group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
-                Komunitas Rasional
-              </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base font-light">
-                Bergabung dengan ribuan investor lainnya untuk berdiskusi secara sehat tanpa terpengaruh FOMO.
-              </p>
-            </motion.div>
+      {/* KOTAK 3 */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, amount: 0.1 }} 
+        transition={{ duration: 0.6, delay: 0.1 }} 
+        className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 md:hover:-translate-y-3 md:hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 md:hover:border-blue-500/50 group"
+      >
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 text-center md:group-hover:text-blue-500 dark:md:group-hover:text-blue-400 transition-colors">
+          Komunitas Rasional
+        </h3>
+        <p className="text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base font-light">
+          Bergabung dengan ribuan investor lainnya untuk berdiskusi secara sehat tanpa terpengaruh FOMO.
+        </p>
+      </motion.div>
 
-          </div>
-          </div>
-        </div>
-      </section>
+    </div>
+  </div>
+</section>
 
     {/* ========================================================= */}
       {/* 3. SECTION MARKET OVERVIEW */}

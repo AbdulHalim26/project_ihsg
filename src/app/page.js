@@ -137,7 +137,7 @@ export default function Page() {
         transition={{ duration: 0.6, delay: 0.1 }} 
         className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 md:hover:-translate-y-3 md:hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 md:hover:border-blue-500/50 group"
       >
-        <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4 text-center transition-colors">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 text-center md:group-hover:text-blue-500 dark:md:group-hover:text-blue-400 transition-colors">
           Kurikulum Terstruktur
         </h3>
         <p className="text-slate-600 dark:text-slate-300 text-center leading-relaxed text-sm md:text-base font-light">

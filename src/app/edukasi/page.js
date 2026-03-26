@@ -1,34 +1,159 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from 'next/navigation';
 
 const roadmapData = {
-  dasar: [
-    { step: 1, title: "Mengenal Dunia Saham", descCard: "Memahami saham sebagai kepemilikan bisnis & sejarah pasar modal di Indonesia.", modules: "3 modul", level: "Dasar", contentTitle: "Mengenal Dunia Saham", contentDesc: "Membangun landasan berpikir yang benar tentang investasi. Di sini, Anda akan membedah definisi saham bukan sekadar angka di layar, melainkan bukti nyata kepemilikan aset sebuah bisnis. Modul ini juga menelusuri sejarah panjang pasar modal di Indonesia untuk memberikan perspektif bagaimana bursa efek bertumbuh menjadi pilar ekonomi bangsa yang aman dan terpercaya." },
-    { step: 2, title: "Ekosistem Bursa Efek", descCard: "Mengenal peran OJK, IDX, KSEI, dan cara transaksi saham di balik layar.", modules: "3 modul", level: "Dasar", contentTitle: "Ekosistem Bursa Efek (BEI)", contentDesc: "Memahami siapa saja 'pemain' di balik layar pasar modal. Anda akan mempelajari peran vital OJK sebagai pengawas, IDX sebagai penyelenggara bursa, serta KSEI dan KPEI sebagai penjaga keamanan aset Anda. Pengetahuan ini penting agar Anda merasa aman berinvestasi." },
-    { step: 3, title: "Persiapan Rekening Dana Nasabah", descCard: "Panduan memilih sekuritas legal dan cara praktis membuka akun investasi.", modules: "3 modul", level: "Dasar", contentTitle: "Persiapan Rekening Dana Nasabah", contentDesc: "Langkah praktis untuk memulai perjalanan investasi Anda secara legal. Kami menyediakan panduan komprehensif dalam memilih perusahaan sekuritas yang memiliki kredibilitas tinggi dan biaya transaksi yang kompetitif. Anda akan dibimbing melalui proses pembukaan akun secara online." },
-    { step: 4, title: "Membaca Aplikasi Trading", descCard: "Bid, Offer, Lot, ARA (Auto Reject Atas), dan ARB (Auto Reject Bawah).", modules: "4 modul", level: "Dasar", contentTitle: "Membaca Aplikasi Trading", contentDesc: "Menguasai 'bahasa' pasar agar Anda bisa bertransaksi dengan percaya diri. Langkah ini mengupas tuntas fitur-fitur utama dalam aplikasi trading, mulai dari memahami antrean jual-beli (Bid & Offer) hingga satuan lot." }
+ dasar: [
+    { 
+      step: 1, 
+      title: "Mengenal Dunia Saham", 
+      slug: "mengenal-dunia-saham",
+      descCard: "Memahami saham sebagai kepemilikan bisnis & sejarah pasar modal di Indonesia.", 
+      modules: "3 modul", 
+      level: "Dasar", 
+      contentTitle: "Mengenal Dunia Saham", 
+      contentDesc: "Membangun landasan berpikir yang benar tentang investasi..." 
+    },
+    { 
+      step: 2, 
+      title: "Ekosistem Bursa Efek", 
+      slug: "ekosistem-bursa-efek", 
+      descCard: "Mengenal peran OJK, IDX, KSEI, dan cara transaksi saham di balik layar.", 
+      modules: "3 modul", 
+      level: "Dasar", 
+      contentTitle: "Ekosistem Bursa Efek (BEI)", 
+      contentDesc: "Memahami siapa saja 'pemain' di balik layar pasar modal..." 
+    },
+    { 
+      step: 3, 
+      title: "Persiapan Rekening Dana Nasabah", 
+      slug: "persiapan-rekening-dana-nasabah", 
+      descCard: "Panduan memilih sekuritas legal dan cara praktis membuka akun investasi.", 
+      modules: "3 modul", 
+      level: "Dasar", 
+      contentTitle: "Persiapan Rekening Dana Nasabah", 
+      contentDesc: "Langkah praktis untuk memulai perjalanan investasi Anda secara legal..." 
+    },
+    { 
+      step: 4, 
+      title: "Membaca Aplikasi Trading", 
+      slug: "membaca-aplikasi-trading", 
+      descCard: "Bid, Offer, Lot, ARA (Auto Reject Atas), dan ARB (Auto Reject Bawah).", 
+      modules: "4 modul", 
+      level: "Dasar", 
+      contentTitle: "Membaca Aplikasi Trading", 
+      contentDesc: "Menguasai 'bahasa' pasar agar Anda bisa bertransaksi dengan percaya diri..." 
+    }
   ],
-  menengah: [
-    { step: 1, title: "Bedah Laporan Keuangan", descCard: "Memahami data mentah perusahaan dari tiga pilar utama dengan baik.", modules: "4 modul", level: "Menengah", contentTitle: "Bedah Laporan Keuangan", contentDesc: "Langkah pertama menuju kemandirian analisis adalah memahami data mentah perusahaan: Neraca, Laba Rugi, dan Arus Kas." }
+menengah: [
+    { 
+      step: 1, 
+      title: "Bedah Laporan Keuangan", 
+      slug: "bedah-laporan-keuangan",
+      descCard: "Memahami data mentah perusahaan dari tiga pilar utama dengan baik.", 
+      modules: "Modul", 
+      level: "Menengah", 
+      contentTitle: "Bedah Laporan Keuangan", 
+      contentDesc: "Langkah pertama menuju kemandirian analisis adalah memahami data mentah perusahaan. Di sini Anda akan belajar membedah Neraca, Laba Rugi, dan Arus Kas untuk mengetahui kesehatan asli sebuah bisnis." 
+    },
+    { 
+      step: 2, 
+      title: "Valuasi Saham (Murah vs Mahal)", 
+      slug: "valuasi-saham-dasar",
+      descCard: "Belajar menghitung PER dan PBV agar tidak membeli saham kemahalan.", 
+      modules: "Modul", 
+      level: "Menengah", 
+      contentTitle: "Valuasi Saham Dasar", 
+      contentDesc: "Perusahaan bagus belum tentu sahamnya layak dibeli jika harganya sudah terlalu mahal. Pelajari metrik valuasi dasar seperti Price to Earning Ratio (PER) dan Price to Book Value (PBV)." 
+    },
+    { 
+      step: 3, 
+      title: "Analisa Teknikal Lanjutan", 
+      slug: "analisa-teknikal-lanjutan",
+      descCard: "Membaca Trend, Support, Resistance, dan indikator Moving Average.", 
+      modules: "Modul", 
+      level: "Menengah", 
+      contentTitle: "Analisa Teknikal Lanjutan", 
+      contentDesc: "Tingkatkan skill membaca grafik Anda. Temukan titik pantul harga (Support) dan titik rawan turun (Resistance), serta pahami arah tren menggunakan indikator Moving Average." 
+    },
+    { 
+      step: 4, 
+      title: "Corporate Action", 
+      slug: "corporate-action",
+      descCard: "Memahami efek Dividen, Right Issue, dan Stock Split pada harga saham.", 
+      modules: "Modul", 
+      level: "Menengah", 
+      contentTitle: "Corporate Action (Aksi Korporasi)", 
+      contentDesc: "Perusahaan sering melakukan aksi yang mengubah struktur sahamnya. Pahami jebakan 'Dividend Trap' dan manfaatkan peluang dari Right Issue atau Stock Split." 
+    }
   ],
   mahir: [
-    { step: 1, title: "Money Management", descCard: "Menghitung berapa persen modal yang boleh masuk ke dalam satu aset.", modules: "3 modul", level: "Mahir", contentTitle: "Money Management & Position Sizing", contentDesc: "Level mahir dimulai dengan teknik Position Sizing untuk membatasi risiko secara matematis dan logis, sehingga modal Anda tetap aman saat krisis melanda." }
+    { 
+      step: 1, 
+      title: "Money Management", 
+      slug: "money-management",
+      descCard: "Menghitung persentase modal dan membatasi risiko secara matematis.", 
+      modules: "Modul", 
+      level: "Mahir", 
+      contentTitle: "Money Management & Position Sizing", 
+      contentDesc: "Level mahir dimulai dengan teknik Position Sizing untuk membatasi risiko secara matematis dan logis. Anda akan belajar cara agar modal Anda tetap aman meski pasar sedang krisis." 
+    },
+    { 
+      step: 2, 
+      title: "Bandarmologi & Broker Summary", 
+      slug: "bandarmologi",
+      descCard: "Melacak jejak uang besar (Big Fund) dan investor asing di pasar.", 
+      modules: "Modul", 
+      level: "Mahir", 
+      contentTitle: "Bandarmologi (Ilmu Arus Dana)", 
+      contentDesc: "Harga saham digerakkan oleh uang besar. Pelajari cara membaca Broker Summary untuk mendeteksi apakah saham sedang diakumulasi (dikumpulkan) atau didistribusi (dibuang) oleh institusi besar." 
+    },
+    { 
+      step: 3, 
+      title: "Makro Ekonomi & Siklus Sektoral", 
+      slug: "makro-ekonomi",
+      descCard: "Pengaruh suku bunga, inflasi, dan nilai tukar terhadap IHSG.", 
+      modules: "Modul", 
+      level: "Mahir", 
+      contentTitle: "Makro Ekonomi & Sektoral", 
+      contentDesc: "Investor besar melihat kondisi dunia sebelum membeli saham. Pahami bagaimana keputusan The Fed, tingkat inflasi, dan rotasi sektor bisnis sangat mempengaruhi portofolio Anda." 
+    },
+    { 
+      step: 4, 
+      title: "Menyusun Trading Plan", 
+      slug: "trading-plan",
+      descCard: "Membuat sistem trading mandiri yang mekanis dan tanpa emosi.", 
+      modules: "Modul", 
+      level: "Mahir", 
+      contentTitle: "Menyusun Trading/Investing Plan", 
+      contentDesc: "Lulus dari AKSARA berarti Anda bisa mandiri. Rangkum semua ilmu Anda ke dalam satu rencana baku: kapan harus beli, kapan harus Hold, dan kapan harus Cut Loss tanpa penyesalan." 
+    }
   ]
 };
 
 const investorsData = [
   { id: "inv-1", src: "/ihsg/LKH.jpg", name: "Lo Kheng Hong", title: "Warren Buffett Indonesia", bio: "Value investor legendaris. Bukti nyata bahwa sabar berinvestasi di bursa saham lokal (IHSG) bisa membawa kebebasan finansial sejati." },
   { id: "inv-2", src: "/ihsg/warren.png", name: "Warren Buffett", title: "The Oracle of Omaha", bio: "Kiblat value investing dunia. Mengajarkan kita pentingnya membeli bisnis yang luar biasa dengan harga yang masuk akal." },
-  { id: "inv-3", src: "/ihsg/andri.jpeg", name: "Andri Hakim", title: "Investor Muda Inspiratif", bio: "Mewakili generasi muda yang sukses meraup profit konsisten dari bursa saham Indonesia dengan analisis yang tajam dan realistis." },
+  { id: "inv-3", src: "/ihsg/andri.jpeg", name: "Andry Hakim", title: "Investor Muda Inspiratif", bio: "Mewakili generasi muda yang sukses meraup profit konsisten dari bursa saham Indonesia dengan analisis yang tajam dan realistis." },
   { id: "inv-4", src: "/ihsg/rivankurniawan.jpeg", name: "Rivan Kurniawan", title: "Indonesia Value Investor", bio: "Praktisi dan edukator saham yang membuktikan bahwa memahami fundamental perusahaan adalah kunci kemenangan jangka panjang." },
   { id: "inv-5", src: "/ihsg/radityadika.jpeg", name: "Raditya Dika", title: "Kreator & Investor", bio: "Membuktikan bahwa siapa saja, dari latar belakang apa saja, bisa dan wajib mulai berinvestasi demi masa depan yang tenang." },
 ];
 
 export default function EdukasiPage() {
-  const [activeTab, setActiveTab] = useState("dasar");
+ const [activeTab, setActiveTab] = useState("dasar");
   const [selectedInvestor, setSelectedInvestor] = useState(null);
+  const searchParams = useSearchParams();
+  const tabQuery = searchParams.get('tab');
+
+  useEffect(() => {
+    if (tabQuery === 'dasar' || tabQuery === 'menengah' || tabQuery === 'mahir') {
+      setActiveTab(tabQuery);
+    }
+  }, [tabQuery]);
 
   return (
     <main className="min-h-screen bg-[#0B1120] text-white font-sans overflow-x-hidden relative">
@@ -46,10 +171,9 @@ export default function EdukasiPage() {
           </p>
         </div>
 
-       {/* --- TABS --- */}
+        {/* --- TABS --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 w-full max-w-5xl mx-auto items-center relative z-10 font-['Inter'] px-4" style={{ marginBottom: '80px' }}>
           {["dasar", "menengah", "mahir"].map((tab, index) => (
-            
             <div 
               key={tab} 
               className={`flex ${
@@ -64,17 +188,15 @@ export default function EdukasiPage() {
                 style={{ 
                   padding: '16px 48px',
                   minWidth: '160px',
-                  // INI FINAL JURUS TABS: 
-                  backgroundColor: activeTab === tab ? '#ffffff' : '#1E293B', // Putih kalau aktif, abu-abu transparan/gelap kalau mati
-                  color: activeTab === tab ? '#0B1120' : '#94a3b8',               // Teks gelap kalau aktif, abu-abu kalau mati
-                  borderColor: activeTab === tab ? '#ffffff' : 'transparent',     // Border putih kalau aktif
-                  boxShadow: activeTab === tab ? '0 0 20px rgba(255,255,255,0.3)' : 'none' // Efek nyala/glowing
+                  backgroundColor: activeTab === tab ? '#ffffff' : '#1E293B',
+                  color: activeTab === tab ? '#0B1120' : '#94a3b8',
+                  borderColor: activeTab === tab ? '#ffffff' : 'transparent',
+                  boxShadow: activeTab === tab ? '0 0 20px rgba(255,255,255,0.3)' : 'none'
                 }}
               >
                 {tab.toUpperCase()}
               </button>
             </div>
-
           ))}
         </div>
 
@@ -91,49 +213,63 @@ export default function EdukasiPage() {
               transition={{ duration: 0.3 }}
               className="w-full flex flex-col relative z-10" 
             >
-              {roadmapData[activeTab].map((item, index) => (
-                <div key={index} className="flex flex-col md:flex-row w-full items-stretch relative z-10 gap-8 md:gap-0" style={{ paddingBottom: index === roadmapData[activeTab].length - 1 ? '0px' : '110px' }}>
+              {roadmapData[activeTab].map((item, index) => {
+
+              return (
+                <Link 
+                  href={`/edukasi/${item.slug}`} 
+                  key={index} 
+                  className="flex flex-col md:flex-row w-full items-stretch relative z-10 gap-8 md:gap-0 group cursor-pointer" 
+                  style={{ paddingBottom: index === roadmapData[activeTab].length - 1 ? '0px' : '110px' }}
+                >
                   
-                  {/* --- KIRI: KARTU --- */}
+                  {/* --- BAGIAN KIRI (CARD) --- */}
                   <div className="flex-1 w-full flex justify-center md:justify-end md:pr-10 lg:pr-16 relative z-10 items-start">
-                    <div className="bg-[#1E293B] rounded-xl p-6 w-full max-w-[280px] border border-slate-700 shadow-xl flex flex-col justify-between transition-all">
+                    {/* 1. UBAH max-w-[280px] jadi max-w-[360px] atau max-w-sm (biar lebih lebar) */}
+                    {/* 2. UBAH p-6 jadi p-8 (opsional, biar napasnya lebih lega) */}
+                    <div className="bg-[#1E293B] rounded-xl p-7 w-full max-w-[360px] border border-slate-700 shadow-xl flex flex-col justify-between transition-all group-hover:border-emerald-400 group-hover:shadow-emerald-400/20">
                       <div>
-                        <span className="text-[10px] font-bold text-emerald-400 mb-2 flex items-center gap-1.5 uppercase tracking-wider">
+                        <span className="text-[11px] font-bold text-emerald-400 mb-3 flex items-center gap-1.5 uppercase tracking-wider">
                           <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                           Langkah {item.step}
                         </span>
-                        <h3 className="text-[13px] font-bold text-white mb-3 leading-tight">{item.title}</h3>
-                        <p className="text-slate-300 text-[12px] leading-relaxed mb-6 font-light">{item.descCard}</p>
+                        {/* 3. UBAH text-[13px] jadi text-base (16px) atau text-[15px] */}
+                        <h3 className="text-base font-bold text-white mb-3 leading-tight">{item.title}</h3>
+                        
+                        {/* 4. UBAH text-[12px] jadi text-sm (14px) */}
+                        <p className="text-slate-300 text-sm leading-relaxed mb-6 font-light">{item.descCard}</p>
                       </div>
-                      <div className="flex items-center gap-4 text-[11px] font-medium text-slate-300 border-t border-slate-700 pt-4 mt-auto">
-                        <span className="flex items-center gap-1">📄 {item.modules}</span>
+                      <div className="flex items-center gap-4 text-xs font-medium text-slate-300 border-t border-slate-700 pt-4 mt-auto">
+                        <span className="flex items-center gap-1">📄 Modul</span>
                         <span className="flex items-center gap-1">📊 {item.level}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* --- TENGAH: ANGKA & GARIS --- */}
+                  {/* --- BAGIAN TENGAH (ANGKA TIMELINE) --- */}
                   <div className="hidden md:flex flex-none w-16 flex-col items-center justify-start relative z-20">
                     {index !== roadmapData[activeTab].length - 1 && (
                       <div className="absolute top-0 bottom-0 w-[2px] bg-slate-400 -z-10"></div>
                     )}
-                    <div className="text-xl font-bold text-white relative z-10 bg-[#0B1120] py-2 px-3 mt-1 rounded-md">
+                    {/* Angkanya ikut ganti warna pas dihover */}
+                    <div className="text-xl font-bold text-white relative z-10 bg-[#0B1120] py-2 px-3 mt-1 rounded-md transition-colors group-hover:text-emerald-400">
                       {item.step}
                     </div>
                   </div>
 
-                  {/* --- KANAN: TEKS PENJELASAN --- */}
+                  {/* --- BAGIAN KANAN (KONTEN TEKS) --- */}
                   <div className="flex-1 w-full flex justify-start md:pl-10 lg:pl-16 relative z-10 items-start pt-0 md:pt-3">
                     <div className="w-full">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-snug">{item.contentTitle}</h3>
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-snug transition-colors group-hover:text-emerald-400">{item.contentTitle}</h3>
                       <p className="text-sm md:text-[13px] text-justify md:text-left text-slate-300 font-light leading-relaxed">
                         {item.contentDesc}
                       </p>
                     </div>
                   </div>
 
-                </div>
-              ))}
+                </Link>
+              );
+            })}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -147,7 +283,6 @@ export default function EdukasiPage() {
           </h2>
           
           <div className="flex flex-col items-center gap-y-20 w-full">
-            
             <div className="flex justify-center items-center w-full max-w-[350px] mx-auto -space-x-8 relative z-10">
               {investorsData.map((inv, index) => (
                 <motion.div 
@@ -162,7 +297,6 @@ export default function EdukasiPage() {
               ))}
             </div>
 
-            {/* Kotak Detail Investor */}
             <AnimatePresence mode="wait">
               {selectedInvestor && (
                 <motion.div
@@ -174,65 +308,33 @@ export default function EdukasiPage() {
                   className="w-full max-w-4xl mx-auto relative overflow-hidden z-30" 
                   style={{ marginTop: '80px' }} 
                 >
-                  <div className="bg-slate-800/80 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-slate-700 shadow-2xl relative text-left flex flex-col md:flex-row items-center md:items-start gap-8">
-                    
-                    {/* Tombol Close X */}
+                  <div className="bg-slate-800/80 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-slate-700 shadow-2xl relative text-left flex flex-col md:flex-row items-center md:items-start gap-8 overflow-hidden">
                     <button 
                       onClick={() => setSelectedInvestor(null)} 
                       className="absolute flex items-center justify-center bg-slate-700/80 hover:bg-slate-600 rounded-full text-slate-300 hover:text-white transition-all z-50 border border-slate-500/50 cursor-pointer"
-                      style={{ 
-                        width: '40px',
-                        height: '40px',
-                        top: '24px', 
-                        right: '24px' 
-                      }}
+                      style={{ width: '40px', height: '40px', top: '24px', right: '24px' }}
                     >
                       ✕
                     </button>
 
-                    {/* Foto Besar di dalam Banner */}
                     <div className="w-32 h-32 shrink-0 rounded-full border-4 border-slate-600 overflow-hidden shadow-lg mt-8 md:mt-0 md:ml-12">
                       <img src={selectedInvestor.src} alt={selectedInvestor.name} className="w-full h-full object-cover" />
                     </div>
 
-                    {/* Teks Penjelasan (Pakai bio, title, name sesuai datamu) */}
                     <div className="flex-1 text-center md:text-left mt-2 md:mt-0">
-                      <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-1 tracking-tight">
-                        {selectedInvestor.name}
-                      </h3>
-                      <p className="text-emerald-400 text-sm md:text-base font-semibold mb-4 uppercase tracking-widest">
-                        {selectedInvestor.title}
-                      </p>
-                      <p className="text-slate-300 leading-relaxed font-light text-sm md:text-base">
-                        {selectedInvestor.bio}
-                      </p>
+                      <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-1 tracking-tight">{selectedInvestor.name}</h3>
+                      <p className="text-emerald-400 text-sm md:text-base font-semibold mb-4 uppercase tracking-widest">{selectedInvestor.title}</p>
+                      <p className="text-slate-300 leading-relaxed font-light text-sm md:text-base">{selectedInvestor.bio}</p>
                     </div>
-
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
-
-          {/* 👇 INI PENUTUP BUNGKUS BARUNYA 👇 */}
           </div>
-          
-
-          <button className="bg-[#1E293B] hover:bg-slate-700 text-white font-semibold py-4 px-12 rounded-xl transition-all border border-slate-600 hover:border-white shadow-lg active:scale-95">
-            Mulai Belajar
-          </button>
         </div>
-
-        {/* --- BANNER --- */}
-        <div className="mt-24 w-full h-[300px] rounded-3xl relative overflow-hidden shadow-2xl">
-          <img src="/photos/banners.jpg" alt="Edukasi Banner" className="absolute inset-0 w-full h-full object-cover z-0" onError={(e) => { e.target.style.display = 'none'; e.target.parentNode.style.backgroundColor = '#1E293B'; }} />
-          <div className="z-10 text-center relative flex flex-col items-center justify-center h-full">
-             <h1 className="text-5xl md:text-6xl font-black text-white italic tracking-tighter mb-2 shadow-black drop-shadow-lg">KITA SEMUA</h1>
-             <h2 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter shadow-black drop-shadow-lg">ADALAH INVESTOR</h2>
-          </div>
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent z-1"></div>
-        </div>
-
       </div>
+
     </main>
+    
   );
 }

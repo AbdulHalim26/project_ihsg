@@ -11,8 +11,6 @@ export default function Page() {
   const fadeOut = useTransform(scrollY, [0, 350], [1, 0]); 
   const blurOut = useTransform(scrollY, [0, 350], ["blur(0px)", "blur(10px)"]); 
   const slideDown = useTransform(scrollY, [0, 350], [0, 100]); 
-  const sec2FadeOut = useTransform(scrollY, [600, 900], [1, 0]); 
-  const sec2BlurOut = useTransform(scrollY, [600, 900], ["blur(0px)", "blur(10px)"]);
   
   const stockLogos = [
     { id: 1, name: "BBCA", src: "/ihsg/BBCA.svg", popFinalX: -90, popFinalY: -220 },
@@ -104,7 +102,7 @@ export default function Page() {
       {/* ========================================================= */}
       <section className="py-24 relative z-10 bg-white dark:bg-[#0B1120] transition-colors duration-300"> 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div style={{ opacity: sec2FadeOut, filter: sec2BlurOut }}>
+          <div>
           
           <motion.h2 
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
@@ -171,7 +169,7 @@ export default function Page() {
             </motion.div>
 
           </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

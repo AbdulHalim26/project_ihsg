@@ -15,7 +15,11 @@ export default function PredictPage() {
     setResult(null);
 
     try {
+<<<<<<< HEAD
+      const res = await fetch(` https://api-ihsg-backend.onrender.com/predict?stock=${stock}`);
+=======
       const res = await fetch(`https://projek-ihsg-production.up.railway.app/predict?stock=${stock}`);
+>>>>>>> 6907094a89503fe1dd57de3d5115054f5cfe01b0
       const data = await res.json();
       setResult(data);
     } catch (err) {

@@ -10,7 +10,6 @@ export default function Page() {
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const fadeOut = useTransform(scrollY, [0, 350], [1, 0]); 
   const blurOut = useTransform(scrollY, [0, 350], ["blur(0px)", "blur(10px)"]); 
-  const slideDown = useTransform(scrollY, [0, 350], [0, 100]); 
   
   const stockLogos = [
     { id: 1, name: "BBCA", src: "/ihsg/BBCA.svg", popFinalX: -90, popFinalY: -220 },
@@ -98,7 +97,7 @@ export default function Page() {
       </section>
 
       {/* ========================================================= */}
-      {/* 2. SECTION MENGAPA AKSARA */}
+      {/* 2. SECTION MENGAPA AKSARA (REVISI: ANTI-BLUR PREMATUR) */}
       {/* ========================================================= */}
       <section className="py-24 relative z-10 bg-white dark:bg-[#0B1120] transition-colors duration-300"> 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,8 +106,8 @@ export default function Page() {
           <motion.h2 
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -20, filter: "blur(10px)" }} 
-            viewport={{ once: false, amount: 0.2 }} 
+            /* Hapus exit biar pas di scroll ke bawah tulisannya gak ngeblur lagi */
+            viewport={{ once: true, amount: 0.2 }} 
             transition={{ duration: 0.8 }}
             className="text-3xl md:text-4xl font-bold text-center text-slate-900 dark:text-white mb-16"
           >
@@ -121,8 +120,7 @@ export default function Page() {
             <motion.div 
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: 30, filter: "blur(10px)" }} 
-              viewport={{ once: false, amount: 0.1 }} 
+              viewport={{ once: true, amount: 0.1 }} 
               transition={{ duration: 0.6, delay: 0.1 }}
               className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 hover:border-blue-500/50 group"
             >
@@ -138,8 +136,7 @@ export default function Page() {
             <motion.div 
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: 30, filter: "blur(10px)" }} 
-              viewport={{ once: false, amount: 0.1 }} 
+              viewport={{ once: true, amount: 0.1 }} 
               transition={{ duration: 0.6, delay: 0.1 }} 
               className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 hover:border-blue-500/50 group"
             >
@@ -155,8 +152,7 @@ export default function Page() {
             <motion.div 
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: 30, filter: "blur(10px)" }} 
-              viewport={{ once: false, amount: 0.1 }} 
+              viewport={{ once: true, amount: 0.1 }} 
               transition={{ duration: 0.6, delay: 0.1 }} 
               className="bg-slate-50 dark:bg-[#1E293B] rounded-xl p-8 transition-all duration-300 hover:-translate-y-3 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.3)] border border-slate-200 dark:border-white/5 hover:border-blue-500/50 group"
             >
@@ -181,7 +177,7 @@ export default function Page() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
@@ -196,7 +192,7 @@ export default function Page() {
           <motion.div
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }} 
-            viewport={{ once: false, amount: 0.1 }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-xl"
           >
@@ -215,7 +211,7 @@ export default function Page() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
@@ -233,7 +229,7 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group hover:border-blue-500/50 transition-colors"
             >
@@ -257,7 +253,7 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group hover:border-emerald-500/50 transition-colors"
             >
@@ -281,7 +277,7 @@ export default function Page() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group hover:border-purple-500/50 transition-colors"
             >

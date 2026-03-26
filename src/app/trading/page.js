@@ -15,7 +15,7 @@ export default function PredictPage() {
     setResult(null);
 
     try {
-      const res = await fetch(`http://localhost:8000/predict?stock=${stock}`);
+      const res = await fetch(` https://api-ihsg-backend.onrender.com/predict?stock=${stock}`);
       const data = await res.json();
       setResult(data);
     } catch (err) {

@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0B1120] border-t border-white/10 pt-16 pb-8 relative z-10">
+    <footer className="bg-white dark:bg-[#0B1120] border-t border-slate-200 dark:border-white/10 pt-16 pb-8 relative z-10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Grid Layout buat isi Footer */}
@@ -18,37 +18,37 @@ export default function Footer() {
                   alt="Aksara Logo" 
                   width={200} 
                   height={80} 
-                  className="w-auto h-20 object-contain"
+                  className="w-auto h-20 object-contain drop-shadow-sm dark:drop-shadow-none"
                   priority
                 />
               </div>
             </Link>
-            <p className="text-slate-400 font-light text-sm leading-relaxed max-w-sm">
+            <p className="text-slate-600 dark:text-slate-400 font-light text-sm leading-relaxed max-w-sm">
               Langkah Cerdas Menuju Kebebasan Finansial melalui Aksi Saham Rasional. Platform edukasi dan analisis saham terpercaya untuk investor Indonesia.
             </p>
           </div>
 
           {/* Kolom 2: Eksplorasi (Sesuai Navbar Baru) */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Eksplorasi</h4>
+            <h4 className="text-slate-900 dark:text-white font-semibold mb-6">Eksplorasi</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="/" className="text-slate-400 hover:text-emerald-400 text-sm transition-colors duration-300">
+                <Link href="/" className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-300">
                   Beranda
                 </Link>
               </li>
               <li>
-                <Link href="/edukasi?tab=dasar" className="text-slate-400 hover:text-emerald-400 text-sm transition-colors duration-300">
+                <Link href="/edukasi?tab=dasar" className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-300">
                   Kelas Edukasi
                 </Link>
               </li>
               <li>
-                <Link href="/trading/simulasi" className="text-slate-400 hover:text-emerald-400 text-sm transition-colors duration-300">
+                <Link href="/trading/simulasi" className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-300">
                   Simulasi Trading
                 </Link>
               </li>
               <li>
-                <Link href="/promosi" className="text-slate-400 hover:text-emerald-400 text-sm transition-colors duration-300">
+                <Link href="/promosi" className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-300">
                   Promosi & Kemitraan
                 </Link>
               </li>
@@ -57,10 +57,10 @@ export default function Footer() {
 
          {/* Kolom 3: Perusahaan */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Perusahaan</h4>
+            <h4 className="text-slate-900 dark:text-white font-semibold mb-6">Perusahaan</h4>
             <ul className="space-y-4">
               <li>
-                <Link href="/tentang-kami" className="text-slate-400 hover:text-emerald-400 text-sm transition-colors duration-300">
+                <Link href="/tentang-kami" className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-300">
                   Tentang Kami
                 </Link>
               </li>
@@ -70,7 +70,7 @@ export default function Footer() {
                   href="https://wa.me/6281312333735?text=Halo%20Tim%20Aksara,%20saya%20tertarik%20untuk%20diskusi%20mengenai%20kemitraan." 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-slate-400 hover:text-emerald-400 text-sm transition-colors duration-300"
+                  className="text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 text-sm transition-colors duration-300"
                 >
                   Hubungi Kami
                 </a>
@@ -81,8 +81,8 @@ export default function Footer() {
         </div>
 
         {/* Garis Pemisah Bawah */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-xs text-center md:text-left">
+        <div className="border-t border-slate-200 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-500 dark:text-slate-500 text-xs text-center md:text-left">
             &copy; {new Date().getFullYear()} AKSARA (Aksi Saham Rasional). All rights reserved.
           </p>
           
@@ -93,7 +93,7 @@ export default function Footer() {
               href="https://github.com/AbdulHalim26/project_ihsg" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-emerald-400 transition-colors duration-300"
+              className="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300"
               aria-label="GitHub Project"
             >
               <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6" aria-hidden="true">
@@ -105,7 +105,7 @@ export default function Footer() {
             <Link 
               href="https://wa.me/6281312333735?text=Halo%20Tim%20Aksara!"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-emerald-400 transition-colors duration-300"
+              className="text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300"
               aria-label="WhatsApp Contact"
             >
               <svg fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6" aria-hidden="true">

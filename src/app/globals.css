@@ -1,5 +1,4 @@
 @import "tailwindcss";
-/* Ini ngasi tau Tailwind v4 buat pake class .dark */
 @custom-variant dark (&:is(.dark *)); 
 
 :root {

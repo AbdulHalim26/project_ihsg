@@ -15,8 +15,8 @@ const navData = [
   {
     label: "Trading",
     links: [
-      { label: "Trading Saham", href: "/trading/saham" },
-      { label: "Simulasi Trading", href: "/trading/simulasi" }
+      { label: "Prediksi Saham AI", href: "/trading" },
+      { label: "Robo Advisor AI", href: "/trading/robo" } 
     ]
   },
   {
@@ -39,7 +39,6 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          {/* PANGGIL NAV-NYA DAN MASUKIN DATA ITEMS */}
           <CardNav logo="/logo-aksara.png" items={navData} />
           
           <main className="min-h-screen">

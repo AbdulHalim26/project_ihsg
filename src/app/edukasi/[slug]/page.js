@@ -12,12 +12,12 @@ export default async function IsiModul({ params }) {
   // =========================================================
   if (!konten || !konten.sections) {
     return (
-      <div className="min-h-screen pt-[120px] pb-12 px-6 flex flex-col items-center justify-center text-white bg-[#0B1120]">
-        <div className="bg-[#151E2D] border border-slate-700 p-10 rounded-2xl text-center max-w-lg shadow-2xl">
+      <div className="min-h-screen pt-[120px] pb-12 px-6 flex flex-col items-center justify-center bg-slate-50 text-slate-900 dark:bg-[#0B1120] dark:text-white transition-colors duration-300">
+        <div className="bg-white dark:bg-[#151E2D] border border-slate-200 dark:border-slate-700 p-10 rounded-2xl text-center max-w-lg shadow-xl dark:shadow-2xl transition-colors duration-300">
           <span className="text-5xl mb-4 block">🚧</span>
-          <h1 className="text-2xl font-bold mb-3">Materi Belum Tersedia</h1>
-          <p className="text-slate-400 mb-8">Materi untuk topik ini sedang dalam tahap penyusunan.</p>
-          <Link href="/edukasi" className="inline-block bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-xl text-white font-semibold transition-colors">
+          <h1 className="text-2xl font-bold mb-3 text-slate-900 dark:text-white">Materi Belum Tersedia</h1>
+          <p className="text-slate-600 dark:text-slate-400 mb-8">Materi untuk topik ini sedang dalam tahap penyusunan.</p>
+          <Link href="/edukasi" className="inline-block bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 px-6 py-3 rounded-xl text-white font-semibold transition-colors">
             Kembali ke Roadmap
           </Link>
         </div>
@@ -42,26 +42,26 @@ export default async function IsiModul({ params }) {
   // =========================================================
   return (
     <>
-      <main className="pt-[120px] pb-16 px-4 md:px-8 bg-[#0B1120] text-white font-sans min-h-screen flex flex-col items-center">
+      <main className="pt-[120px] pb-16 px-4 md:px-8 bg-slate-50 text-slate-900 dark:bg-[#0B1120] dark:text-white font-sans min-h-screen flex flex-col items-center transition-colors duration-300">
         
         <div className="w-full max-w-4xl space-y-8">
-          <Link href={`/edukasi?tab=${tabTujuan}`} className="text-slate-400 hover:text-emerald-400 text-sm font-medium transition-colors w-fit flex items-center gap-1">
+          <Link href={`/edukasi?tab=${tabTujuan}`} className="text-slate-500 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 text-sm font-medium transition-colors w-fit flex items-center gap-1">
             ← Kembali
           </Link>
 
           <div className="space-y-3">
-            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-white">
+            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white">
               {konten.title}
             </h1>
-            <p className="text-slate-300 text-lg leading-relaxed max-w-3xl">
+            <p className="text-slate-600 dark:text-slate-300 text-lg leading-relaxed max-w-3xl">
               {konten.intro}
             </p>
           </div>
 
-          <div className="border border-slate-600 rounded-2xl overflow-hidden bg-[#151E2D] shadow-2xl w-full flex flex-col">
+          <div className="border border-slate-200 dark:border-slate-600 rounded-2xl overflow-hidden bg-white dark:bg-[#151E2D] shadow-lg dark:shadow-2xl w-full flex flex-col transition-colors duration-300">
             
             {konten.videoId && (
-              <div className="w-full aspect-video border-b border-slate-600 bg-black shrink-0">
+              <div className="w-full aspect-video border-b border-slate-200 dark:border-slate-600 bg-black shrink-0">
                 <iframe 
                   className="w-full h-full"
                   src={`https://www.youtube.com/embed/${konten.videoId}`} 
@@ -77,11 +77,11 @@ export default async function IsiModul({ params }) {
               <div className="space-y-10 px-4 md:px-8">
                 {konten.sections.map((section, index) => (
                   <div key={index} className="space-y-3">
-                    <h2 className="flex items-start gap-4 text-xl md:text-2xl font-bold text-white leading-snug">
-                      <span className="text-emerald-500 shrink-0">{index + 1}</span>
+                    <h2 className="flex items-start gap-4 text-xl md:text-2xl font-bold text-slate-900 dark:text-white leading-snug">
+                      <span className="text-emerald-600 dark:text-emerald-500 shrink-0">{index + 1}</span>
                       <span>{section.subJudul}</span>
                     </h2>
-                    <p className="text-slate-300 leading-relaxed text-base md:text-lg opacity-90 text-justify md:text-left">
+                    <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg opacity-90 text-justify md:text-left">
                       {section.teks}
                     </p>
                   </div>
@@ -89,10 +89,10 @@ export default async function IsiModul({ params }) {
               </div>
             </div>
 
-            <div className="w-full border-t border-slate-700/50">
+            <div className="w-full border-t border-slate-200 dark:border-slate-700/50">
               <Link 
                 href={`/edukasi?tab=${tabTujuan}`} 
-                className="group flex w-full items-center justify-center bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg py-5 transition-all duration-300 hover:tracking-wide text-center"
+                className="group flex w-full items-center justify-center bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-bold text-lg py-5 transition-all duration-300 hover:tracking-wide text-center"
               >
                 Tandai Selesai & Lanjut
               </Link>

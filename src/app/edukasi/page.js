@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useSearchParams } from 'next/navigation';
 
 const roadmapData = {
- dasar: [
+  dasar: [
     { 
       step: 1, 
       title: "Mengenal Dunia Saham", 
@@ -156,17 +156,17 @@ export default function EdukasiPage() {
   }, [tabQuery]);
 
   return (
-    <main className="min-h-screen bg-[#0B1120] text-white font-sans overflow-x-hidden relative">
+    <main className="min-h-screen font-sans overflow-x-hidden relative bg-slate-50 text-slate-900 dark:bg-[#0B1120] dark:text-white transition-colors duration-300">
       <div className="h-32 w-full block shrink-0"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 relative z-10">
         
         {/* --- HEADER --- */}
         <div className="flex flex-col items-center justify-center text-center mb-16 relative z-10">
-          <h1 className="text-3xl md:text-3xl font-bold tracking-wide uppercase mb-6 leading-tight drop-shadow-lg">
+          <h1 className="text-3xl md:text-3xl font-bold tracking-wide uppercase mb-6 leading-tight drop-shadow-lg text-slate-900 dark:text-white">
             Stock Investor Roadmap
           </h1>
-          <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
             Alur belajar investasi paling komprehensif untuk mencetak investor cerdas. Kurikulum ini dirancang secara sistematis untuk memandu Anda menguasai analisis fundamental hingga manajemen risiko pasar modal secara rasional.
           </p>
         </div>
@@ -184,14 +184,14 @@ export default function EdukasiPage() {
             >
               <button
                 onClick={() => setActiveTab(tab)}
-                className={`flex justify-center items-center rounded-full text-lg font-bold tracking-widest transition-all duration-300 border-2 hover:border-slate-500`}
+                className={`flex justify-center items-center rounded-full text-lg font-bold tracking-widest transition-all duration-300 border-2 ${
+                  activeTab === tab 
+                    ? "bg-slate-900 text-white border-slate-900 shadow-[0_5px_15px_rgba(0,0,0,0.1)] dark:bg-white dark:text-[#0B1120] dark:border-white dark:shadow-[0_0_20px_rgba(255,255,255,0.3)]" 
+                    : "bg-slate-200 text-slate-500 border-transparent hover:border-slate-300 dark:bg-[#1E293B] dark:text-slate-400 dark:hover:border-slate-500"
+                }`}
                 style={{ 
                   padding: '16px 48px',
                   minWidth: '160px',
-                  backgroundColor: activeTab === tab ? '#ffffff' : '#1E293B',
-                  color: activeTab === tab ? '#0B1120' : '#94a3b8',
-                  borderColor: activeTab === tab ? '#ffffff' : 'transparent',
-                  boxShadow: activeTab === tab ? '0 0 20px rgba(255,255,255,0.3)' : 'none'
                 }}
               >
                 {tab.toUpperCase()}
@@ -202,7 +202,7 @@ export default function EdukasiPage() {
 
         {/* --- TIMELINE SECTION --- */}
         <div className="relative w-full mx-auto max-w-6xl">
-          <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-[2px] bg-slate-300 -translate-x-1/2 z-0"></div>
+          <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-[2px] bg-slate-300 dark:bg-slate-700 -translate-x-1/2 z-0 transition-colors duration-300"></div>
 
           <AnimatePresence mode="wait">
             <motion.div 
@@ -225,21 +225,17 @@ export default function EdukasiPage() {
                   
                   {/* --- BAGIAN KIRI (CARD) --- */}
                   <div className="flex-1 w-full flex justify-center md:justify-end md:pr-10 lg:pr-16 relative z-10 items-start">
-                    {/* 1. UBAH max-w-[280px] jadi max-w-[360px] atau max-w-sm (biar lebih lebar) */}
-                    {/* 2. UBAH p-6 jadi p-8 (opsional, biar napasnya lebih lega) */}
-                    <div className="bg-[#1E293B] rounded-xl p-7 w-full max-w-[360px] border border-slate-700 shadow-xl flex flex-col justify-between transition-all group-hover:border-emerald-400 group-hover:shadow-emerald-400/20">
+                    <div className="bg-white dark:bg-[#1E293B] rounded-xl p-7 w-full max-w-[360px] border border-slate-200 dark:border-slate-700 shadow-lg dark:shadow-xl flex flex-col justify-between transition-all group-hover:border-emerald-500 dark:group-hover:border-emerald-400 group-hover:shadow-emerald-500/10 dark:group-hover:shadow-emerald-400/20">
                       <div>
-                        <span className="text-[11px] font-bold text-emerald-400 mb-3 flex items-center gap-1.5 uppercase tracking-wider">
+                        <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 mb-3 flex items-center gap-1.5 uppercase tracking-wider">
                           <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
                           Langkah {item.step}
                         </span>
-                        {/* 3. UBAH text-[13px] jadi text-base (16px) atau text-[15px] */}
-                        <h3 className="text-base font-bold text-white mb-3 leading-tight">{item.title}</h3>
+                        <h3 className="text-base font-bold text-slate-900 dark:text-white mb-3 leading-tight">{item.title}</h3>
                         
-                        {/* 4. UBAH text-[12px] jadi text-sm (14px) */}
-                        <p className="text-slate-300 text-sm leading-relaxed mb-6 font-light">{item.descCard}</p>
+                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6 font-light">{item.descCard}</p>
                       </div>
-                      <div className="flex items-center gap-4 text-xs font-medium text-slate-300 border-t border-slate-700 pt-4 mt-auto">
+                      <div className="flex items-center gap-4 text-xs font-medium text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-700 pt-4 mt-auto">
                         <span className="flex items-center gap-1">📄 Modul</span>
                         <span className="flex items-center gap-1">📊 {item.level}</span>
                       </div>
@@ -249,10 +245,9 @@ export default function EdukasiPage() {
                   {/* --- BAGIAN TENGAH (ANGKA TIMELINE) --- */}
                   <div className="hidden md:flex flex-none w-16 flex-col items-center justify-start relative z-20">
                     {index !== roadmapData[activeTab].length - 1 && (
-                      <div className="absolute top-0 bottom-0 w-[2px] bg-slate-400 -z-10"></div>
+                      <div className="absolute top-0 bottom-0 w-[2px] bg-slate-300 dark:bg-slate-700 -z-10 transition-colors duration-300"></div>
                     )}
-                    {/* Angkanya ikut ganti warna pas dihover */}
-                    <div className="text-xl font-bold text-white relative z-10 bg-[#0B1120] py-2 px-3 mt-1 rounded-md transition-colors group-hover:text-emerald-400">
+                    <div className="text-xl font-bold text-slate-900 dark:text-white relative z-10 bg-slate-50 dark:bg-[#0B1120] py-2 px-3 mt-1 rounded-md transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
                       {item.step}
                     </div>
                   </div>
@@ -260,8 +255,8 @@ export default function EdukasiPage() {
                   {/* --- BAGIAN KANAN (KONTEN TEKS) --- */}
                   <div className="flex-1 w-full flex justify-start md:pl-10 lg:pl-16 relative z-10 items-start pt-0 md:pt-3">
                     <div className="w-full">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-snug transition-colors group-hover:text-emerald-400">{item.contentTitle}</h3>
-                      <p className="text-sm md:text-[13px] text-justify md:text-left text-slate-300 font-light leading-relaxed">
+                      <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-3 leading-snug transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400">{item.contentTitle}</h3>
+                      <p className="text-sm md:text-[13px] text-justify md:text-left text-slate-600 dark:text-slate-300 font-light leading-relaxed">
                         {item.contentDesc}
                       </p>
                     </div>
@@ -278,7 +273,7 @@ export default function EdukasiPage() {
 
         {/* --- SECTION: INVESTOR HEBAT --- */}
         <div className="mt-28 mb-16 text-center relative z-10">
-          <h2 className="text-2xl md:text-2xl font-['Inter'] mb-16 tracking-tight">
+          <h2 className="text-2xl md:text-2xl font-['Inter'] mb-16 tracking-tight text-slate-900 dark:text-white">
             Jadilah investor hebat seperti mereka
           </h2>
           
@@ -289,7 +284,7 @@ export default function EdukasiPage() {
                   key={inv.id} 
                   onClick={() => setSelectedInvestor(inv)} 
                   whileHover={{ y: -10, scale: 1.1, zIndex: 30 }}
-                  className={`w-20 h-20 rounded-full border-4 ${selectedInvestor?.id === inv.id ? 'border-emerald-500 scale-110' : 'border-[#0B1120]'} shadow-[0_0_25px_rgba(255,255,255,0.08)] relative z-10 cursor-pointer overflow-hidden transition-all duration-300 opacity-95 group hover:opacity-100 hover:shadow-[0_0_30px_rgba(72,187,120,0.3)]`}
+                  className={`w-20 h-20 rounded-full border-4 ${selectedInvestor?.id === inv.id ? 'border-emerald-500 scale-110' : 'border-slate-50 dark:border-[#0B1120]'} shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-[0_0_25px_rgba(255,255,255,0.08)] relative z-10 cursor-pointer overflow-hidden transition-all duration-300 opacity-95 group hover:opacity-100 hover:shadow-[0_0_20px_rgba(72,187,120,0.4)]`}
                   style={{ zIndex: investorsData.length - index }}
                 >
                   <img src={inv.src} alt={inv.name} className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110" />
@@ -308,23 +303,23 @@ export default function EdukasiPage() {
                   className="w-full max-w-4xl mx-auto relative overflow-hidden z-30" 
                   style={{ marginTop: '80px' }} 
                 >
-                  <div className="bg-slate-800/80 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-slate-700 shadow-2xl relative text-left flex flex-col md:flex-row items-center md:items-start gap-8 overflow-hidden">
+                  <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-slate-200 dark:border-slate-700 shadow-2xl relative text-left flex flex-col md:flex-row items-center md:items-start gap-8 overflow-hidden transition-colors duration-300">
                     <button 
                       onClick={() => setSelectedInvestor(null)} 
-                      className="absolute flex items-center justify-center bg-slate-700/80 hover:bg-slate-600 rounded-full text-slate-300 hover:text-white transition-all z-50 border border-slate-500/50 cursor-pointer"
+                      className="absolute flex items-center justify-center bg-slate-200 dark:bg-slate-700/80 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all z-50 border border-slate-300 dark:border-slate-500/50 cursor-pointer"
                       style={{ width: '40px', height: '40px', top: '24px', right: '24px' }}
                     >
                       ✕
                     </button>
 
-                    <div className="w-32 h-32 shrink-0 rounded-full border-4 border-slate-600 overflow-hidden shadow-lg mt-8 md:mt-0 md:ml-12">
+                    <div className="w-32 h-32 shrink-0 rounded-full border-4 border-slate-200 dark:border-slate-600 overflow-hidden shadow-lg mt-8 md:mt-0 md:ml-12">
                       <img src={selectedInvestor.src} alt={selectedInvestor.name} className="w-full h-full object-cover" />
                     </div>
 
                     <div className="flex-1 text-center md:text-left mt-2 md:mt-0">
-                      <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-1 tracking-tight">{selectedInvestor.name}</h3>
-                      <p className="text-emerald-400 text-sm md:text-base font-semibold mb-4 uppercase tracking-widest">{selectedInvestor.title}</p>
-                      <p className="text-slate-300 leading-relaxed font-light text-sm md:text-base">{selectedInvestor.bio}</p>
+                      <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white mb-1 tracking-tight">{selectedInvestor.name}</h3>
+                      <p className="text-emerald-600 dark:text-emerald-400 text-sm md:text-base font-semibold mb-4 uppercase tracking-widest">{selectedInvestor.title}</p>
+                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed font-light text-sm md:text-base">{selectedInvestor.bio}</p>
                     </div>
                   </div>
                 </motion.div>

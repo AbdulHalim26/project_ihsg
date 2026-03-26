@@ -199,103 +199,106 @@ export default function Page() {
       </section>
 
     {/* ========================================================= */}
-      {/* 4. SECTION KELAS / LEARNING PATH */}
-      {/* ========================================================= */}
-      <section className="py-24 relative z-10 bg-white dark:bg-[#0F172A] transition-colors duration-300"> 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              Mulai Perjalanan <span className="text-blue-600 dark:text-blue-400">Belajarmu</span>
-            </h2>
-            <p className="text-slate-600 dark:text-slate-300 font-light max-w-2xl mx-auto">
-              Kurikulum yang disusun oleh praktisi berpengalaman. Pilih kelas yang sesuai dengan profil risikomu.
-            </p>
-          </motion.div>
+{/* 4. SECTION KELAS / LEARNING PATH (FIX DARK MODE & MOBILE) */}
+{/* ========================================================= */}
+<section className="py-24 relative z-10 bg-white dark:bg-[#0F172A] transition-colors duration-300"> 
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8 }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+        Mulai Perjalanan <span className="text-blue-600 dark:text-blue-400">Belajarmu</span>
+      </h2>
+      <p className="text-slate-600 dark:text-slate-300 font-light max-w-2xl mx-auto">
+        Kurikulum yang disusun oleh praktisi berpengalaman. Pilih kelas yang sesuai dengan profil risikomu.
+      </p>
+    </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* KARTU 1: PEMULA */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group hover:border-blue-500/50 transition-colors"
-            >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <span className="inline-block py-1 px-3 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-semibold tracking-wider mb-4 border border-blue-200 dark:border-blue-500/30">
-                  LEVEL 1 • GRATIS
-                </span>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Investor Pemula</h3>
-                <p className="text-slate-600 dark:text-slate-400 font-light text-sm mb-8 leading-relaxed">
-                  Pahami apa itu saham, cara kerja bursa efek, dan pengenalan aplikasi sekuritas dari nol.
-                </p>
-                <Link href="/edukasi?tab=dasar" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-slate-200 dark:bg-white/5 hover:bg-blue-600 hover:text-white text-slate-800 dark:text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
-                Mulai Belajar
-              </Link>
-              </div>
-            </motion.div>
-
-            {/* KARTU 2: MENENGAH */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group hover:border-emerald-500/50 transition-colors"
-            >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <span className="inline-block py-1 px-3 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wider mb-4 border border-emerald-200 dark:border-emerald-500/30">
-                  LEVEL 2 • PRO
-                </span>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Analisa Fundamental</h3>
-                <p className="text-slate-600 dark:text-slate-400 font-light text-sm mb-8 leading-relaxed">
-                  Bedah laporan keuangan, valuasi rasio (PER, PBV), dan cara mencari saham salah harga.
-                </p>
-                <Link href="/edukasi?tab=menengah" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-slate-200 dark:bg-white/5 hover:bg-emerald-600 hover:text-white text-slate-800 dark:text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-                  Lihat Silabus
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* KARTU 3: MAHIR */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group hover:border-purple-500/50 transition-colors"
-            >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <span className="inline-block py-1 px-3 rounded-full bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-semibold tracking-wider mb-4 border border-purple-200 dark:border-purple-500/30">
-                  LEVEL 3 • MASTER
-                </span>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Teknikal & Bandarmologi</h3>
-                <p className="text-slate-600 dark:text-slate-400 font-light text-sm mb-8 leading-relaxed">
-                  Membaca chart, indikator teknikal lanjutan, dan mendeteksi akumulasi/distribusi big money.
-                </p>
-                <Link href="/edukasi?tab=mahir" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-slate-200 dark:bg-white/5 hover:bg-purple-600 hover:text-white text-slate-800 dark:text-white font-medium transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]">
-                Lihat Silabus
-              </Link>
-              </div>
-            </motion.div>
-
-          </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      {/* KARTU 1: PEMULA */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group md:hover:border-blue-500/50 transition-colors"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div className="relative z-10">
+          <span className="inline-block py-1 px-3 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-semibold tracking-wider mb-4 border border-blue-200 dark:border-blue-500/30">
+            LEVEL 1 • GRATIS
+          </span>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Investor Pemula</h3>
+          <p className="text-slate-600 dark:text-slate-400 font-light text-sm mb-8 leading-relaxed">
+            Pahami apa itu saham, cara kerja bursa efek, dan pengenalan aplikasi sekuritas dari nol.
+          </p>
+          {/* TOMBOL FIX: Kasih bg lebih tebel di dark mode */}
+          <Link href="/edukasi?tab=dasar" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-semibold transition-all duration-300 md:hover:bg-blue-600 md:hover:text-white md:group-hover:shadow-[0_0_20px_rgba(37,99,235,0.4)]">
+          Mulai Belajar
+        </Link>
         </div>
-      </section>
+      </motion.div>
+
+      {/* KARTU 2: MENENGAH */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group md:hover:border-emerald-500/50 transition-colors"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div className="relative z-10">
+          <span className="inline-block py-1 px-3 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wider mb-4 border border-emerald-200 dark:border-emerald-500/30">
+            LEVEL 2 • PRO
+          </span>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Analisa Fundamental</h3>
+          <p className="text-slate-600 dark:text-slate-400 font-light text-sm mb-8 leading-relaxed">
+            Bedah laporan keuangan, valuasi rasio (PER, PBV), dan cara mencari saham salah harga.
+          </p>
+          {/* TOMBOL FIX: Emerald theme */}
+          <Link href="/edukasi?tab=menengah" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 font-semibold transition-all duration-300 md:hover:bg-emerald-600 md:hover:text-white md:group-hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]">
+            Lihat Silabus
+          </Link>
+        </div>
+      </motion.div>
+
+      {/* KARTU 3: MAHIR */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="bg-slate-50 dark:bg-[#1E293B] rounded-2xl p-8 border border-slate-200 dark:border-white/5 relative overflow-hidden group md:hover:border-purple-500/50 transition-colors"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-purple-500/20 blur-3xl rounded-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div className="relative z-10">
+          <span className="inline-block py-1 px-3 rounded-full bg-purple-100 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 text-xs font-semibold tracking-wider mb-4 border border-purple-200 dark:border-purple-500/30">
+            LEVEL 3 • MASTER
+          </span>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Teknikal & Bandarmologi</h3>
+          <p className="text-slate-600 dark:text-slate-400 font-light text-sm mb-8 leading-relaxed">
+            Membaca chart, indikator teknikal lanjutan, dan mendeteksi akumulasi/distribusi big money.
+          </p>
+          {/* TOMBOL FIX: Purple theme */}
+          <Link href="/edukasi?tab=mahir" className="inline-flex w-full justify-center items-center py-3 px-4 rounded-xl bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 font-semibold transition-all duration-300 md:hover:bg-purple-600 md:hover:text-white md:group-hover:shadow-[0_0_20px_rgba(147,51,234,0.4)]">
+          Lihat Silabus
+        </Link>
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
       
     </main>
   );
